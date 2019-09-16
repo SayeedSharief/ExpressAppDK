@@ -1,5 +1,12 @@
 const express = require('express');
 const app = express()
+const path = require('path')
+
+app.set('view engine', 'pug');
+if(app.get('env') == 'development'){
+    app.locals.pretty = true;
+}
+app.set('views', path.join(__dirname, './views'))
 
 /* just give the folder name where the routes are defined if 'index.js' is file containing the routes, 
     express will pick the index.js file */
