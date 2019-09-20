@@ -29,6 +29,12 @@ app.use('/speakers', speakers)
 // middleware to access all the routes of the feedback module
 app.use('/feedback', feedback)
 
+// All the other routes except which are defined, redirects to this middleware. 
+// It throws 404 response for all the other pages 
+app.use(function(req, res, next){
+    res.status(404).send('Sorry!, cannot find the requested page');
+})
+
 app.listen(3000, () => {
     console.log('Server listening at port 3000')
 })
